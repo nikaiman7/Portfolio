@@ -12,4 +12,4 @@ Learn ArcGIS through projects available on ArcGIS website.
 - Singapore Database ([Link](https://www.arcgis.com/home/item.html?id=b6c521bf02fc46b8887c7af0d071b483))
 
 ## Snapshot Summary
-![alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+![alt text](/relative/path/to/Downtown_Singapore.jpg?raw=true "Optional Title")
