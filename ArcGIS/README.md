@@ -13,3 +13,4 @@ Learn ArcGIS through projects available on ArcGIS website.
 
 ## Snapshot Summary
 ![alt text](/relative/path/to/Downtown_Singapore.jpg?raw=true "Optional Title")
+[My image](nikaiman7.github.com/Portfolio/ArcGIS/Downtown_Singapore.jpg)
