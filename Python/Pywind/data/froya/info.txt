@@ -1,3 +1,0 @@
-mast lat lon lev vars freq
-Froya 63.66638 8.34251 [ 10.  25.  40.  70. 100.] ['M', 'Dir'] 10min
-
