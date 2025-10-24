@@ -68,9 +68,6 @@ chart = alt.Chart(daily_yield).mark_bar(color='#FF8C00').encode(x=alt.X('DATE:T'
 # Display the Altair chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
 
-
-###############################################################################################################################
-
 # Line plot
 # Get sum DAILY_YIELD per inverter per day
 daily_energy_per_inverter = df_1.groupby(['SOURCE_KEY', 'DATE'])['DAILY_YIELD'].sum().reset_index()
@@ -101,9 +98,6 @@ chart = alt.Chart(df).mark_line().encode(
 
 # Display the Altair chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
-
-###############################################################################################################################
-
 
 # Box plot
 # datasets
