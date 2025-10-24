@@ -8,11 +8,6 @@ import seaborn as sns
 import streamlit as st
 import altair as alt
 import os
-import warnings
-
-warnings.filterwarnings("ignore")
-# %matplotlib inline
-plt.rcParams['figure.dpi'] = 140
 
 # --------------------------------------------------------------------- # 
 #                               Datasets
