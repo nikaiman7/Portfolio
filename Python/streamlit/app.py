@@ -81,17 +81,23 @@ pivot_table = daily_energy_per_inverter.pivot(index='DATE', columns='SOURCE_KEY'
 # Plot selected inverters
 selected_inverters = pivot_table.columns[:]  # pick first 3 inverters (or specify)
 
-# st.line_chart(pivot_table[selected_inverters], x_label='Date', y_label='Energy Production (kW)')
+# Melt the pivot table
+df = pivot_table[selected_inverters]
+df = df.reset_index()
+df = df.melt(id_vars='DATE', 
+               var_name='SOURCE_KEY', 
+               value_name='DAILY_YIELD')
 
-# Create an Altair line chart with proper axis labeling
-chart = alt.Chart(pivot_table[selected_inverters]).mark_line().encode(
-                                                                        x=alt.X('DATE:T',       title='Date'),
-                                                                        y=alt.Y('SOURCE_KEY:Q', title='Energy Production (kW)')
-                                                                        ).properties(
-                                                                            title='Energy Production FOr Each Inverters'
-                                                                        ).configure_title(
-                                                                            anchor='middle'
-                                                                        )
+# Altair chart
+chart = alt.Chart(df).mark_line().encode(
+                                        x=alt.X('DATE:T',        title='Date'),
+                                        y=alt.Y('DAILY_YIELD:Q', title='Energy Production (kW)'),
+                                        color='SOURCE_KEY:N'  
+                                        ).properties(
+                                            title='Energy Production For Each Inverter'
+                                        ).configure_title(
+                                            anchor='middle'
+                                        )
 
 # Display the Altair chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
