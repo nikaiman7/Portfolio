@@ -7,21 +7,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 import altair as alt
-import os
 
 # --------------------------------------------------------------------- # 
 #                               Datasets
 # --------------------------------------------------------------------- # 
-# Fetch current working directory
-current_path = os.getcwd()
-
-# Define file name
-file_1 = 'Plant1.csv'
-file_2 = 'Plant2.csv'
-
 # Define path
-path_1 = os.path.join(current_path,file_1)
-path_2 = os.path.join(current_path,file_2)
+path_1 = "https://raw.githubusercontent.com/nikaiman7/Portfolio/refs/heads/main/Python/streamlit/Plant1.csv"
+path_2 = "https://raw.githubusercontent.com/nikaiman7/Portfolio/refs/heads/main/Python/streamlit/Plant2.csv"
 
 # Read datasets
 df_1 = pd.read_csv(path_1)
