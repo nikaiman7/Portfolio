@@ -68,17 +68,17 @@ chart = alt.Chart(daily_yield).mark_bar(color='#FF8C00').encode(x=alt.X('DATE:T'
 # Display the Altair chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
 
-# Line plot
-# Get sum DAILY_YIELD per inverter per day
-daily_energy_per_inverter = df_1.groupby(['SOURCE_KEY', 'DATE'])['DAILY_YIELD'].sum().reset_index()
+# # Line plot
+# # Get sum DAILY_YIELD per inverter per day
+# daily_energy_per_inverter = df_1.groupby(['SOURCE_KEY', 'DATE'])['DAILY_YIELD'].sum().reset_index()
 
-# Pivot for inverter-by-date table (optional)
-pivot_table = daily_energy_per_inverter.pivot(index='DATE', columns='SOURCE_KEY', values='DAILY_YIELD')
+# # Pivot for inverter-by-date table (optional)
+# pivot_table = daily_energy_per_inverter.pivot(index='DATE', columns='SOURCE_KEY', values='DAILY_YIELD')
 
-# Plot selected inverters
-selected_inverters = pivot_table.columns[:]  # pick first 3 inverters (or specify)
+# # Plot selected inverters
+# selected_inverters = pivot_table.columns[:]  # pick first 3 inverters (or specify)
 
-st.line_chart(pivot_table[selected_inverters], x_label='Date', y_label='Energy Production (kW)')
+# st.line_chart(pivot_table[selected_inverters], x_label='Date', y_label='Energy Production (kW)')
 
 # Box plot
 # datasets
