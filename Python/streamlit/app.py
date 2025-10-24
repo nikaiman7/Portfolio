@@ -68,17 +68,36 @@ chart = alt.Chart(daily_yield).mark_bar(color='#FF8C00').encode(x=alt.X('DATE:T'
 # Display the Altair chart in Streamlit
 st.altair_chart(chart, use_container_width=True)
 
-# # Line plot
-# # Get sum DAILY_YIELD per inverter per day
-# daily_energy_per_inverter = df_1.groupby(['SOURCE_KEY', 'DATE'])['DAILY_YIELD'].sum().reset_index()
 
-# # Pivot for inverter-by-date table (optional)
-# pivot_table = daily_energy_per_inverter.pivot(index='DATE', columns='SOURCE_KEY', values='DAILY_YIELD')
+###############################################################################################################################
 
-# # Plot selected inverters
-# selected_inverters = pivot_table.columns[:]  # pick first 3 inverters (or specify)
+# Line plot
+# Get sum DAILY_YIELD per inverter per day
+daily_energy_per_inverter = df_1.groupby(['SOURCE_KEY', 'DATE'])['DAILY_YIELD'].sum().reset_index()
+
+# Pivot for inverter-by-date table (optional)
+pivot_table = daily_energy_per_inverter.pivot(index='DATE', columns='SOURCE_KEY', values='DAILY_YIELD')
+
+# Plot selected inverters
+selected_inverters = pivot_table.columns[:]  # pick first 3 inverters (or specify)
 
 # st.line_chart(pivot_table[selected_inverters], x_label='Date', y_label='Energy Production (kW)')
+
+# Create an Altair line chart with proper axis labeling
+chart = alt.Chart(pivot_table[selected_inverters]).mark_line().encode(
+                                                                        x=alt.X('DATE:T',       title='Date'),
+                                                                        y=alt.Y('SOURCE_KEY:Q', title='Energy Production (kW)')
+                                                                        ).properties(
+                                                                            title='Energy Production FOr Each Inverters'
+                                                                        ).configure_title(
+                                                                            anchor='middle'
+                                                                        )
+
+# Display the Altair chart in Streamlit
+st.altair_chart(chart, use_container_width=True)
+
+###############################################################################################################################
+
 
 # Box plot
 # datasets
